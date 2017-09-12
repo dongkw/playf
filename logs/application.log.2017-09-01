@@ -1,0 +1,33 @@
+20170901-10:52:18 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-10:52:18 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-10:52:18 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-10:52:19 main play You're running Play! in DEV mode
+20170901-10:52:19 main play Could not bind on port 8090
+20170901-10:52:30 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-10:52:30 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-10:52:30 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-10:52:30 main play You're running Play! in DEV mode
+20170901-10:52:30 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170901-10:54:47 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-10:54:47 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-10:54:47 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-10:54:47 main play You're running Play! in DEV mode
+20170901-10:54:47 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170901-10:57:29 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-10:57:29 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-10:57:29 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-10:57:29 main play You're running Play! in DEV mode
+20170901-10:57:29 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170901-10:58:50 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-10:58:50 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-10:58:50 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-10:58:51 main play You're running Play! in DEV mode
+20170901-10:58:51 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170901-11:05:14 main play Starting D:\IdeaWork\big_data_display_system\.
+20170901-11:05:14 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170901-11:05:14 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170901-11:05:14 main play You're running Play! in DEV mode
+20170901-11:05:14 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170901-11:05:16 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170901-11:05:16 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170901-11:05:21 play-thread-1 play Application 'big_data_display_system' is now started !

@@ -1,0 +1,137 @@
+.c-info {
+    position: relative;
+    margin-top: 45px
+}
+
+.c-info .dc-left {
+    width: 900px
+}
+
+.c-info .dc-left .dc-l-top {
+    color: #ff0
+}
+
+.c-info .dc-left .dc-l-top img {
+    vertical-align: bottom
+}
+
+.c-info .dc-left .dc-l-top span {
+    height: 34px;
+    line-height: 34px;
+    font-size: 26px;
+    display: inline-block
+}
+
+.c-info .dc-left .dc-l-top .c-data {
+    margin-left: 70px;
+    font-size: 20px
+}
+
+.c-info .dc-left .dc-l-top .count {
+    font-size: 32px
+}
+
+.c-info .dc-left .data-info {
+    height: 850px;
+    overflow-y: hidden;
+    font-size: 14px
+}
+
+.c-info .dc-left .data-info ul {
+    margin-top: 20px;
+    width: 100%
+}
+
+.c-info .dc-left .data-info ul li {
+    color: #4cfdff;
+    padding-bottom: 3px
+}
+
+.c-info .dc-left .data-info ul li span:first-child {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px
+}
+
+.c-info .dc-left .data-info ul li span:nth-child(2) {
+    width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px
+}
+
+.c-info .dc-right {
+    margin-top: 70px;
+    width: 764px
+}
+
+.c-info .dc-right .r-logo {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative
+}
+.c-info .dc-right .r-logo img{
+    width: 120px;
+    height: 120px;
+}
+
+.c-info .dc-right .r-logo .mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    width: 120px;
+    height: 120px;
+    opacity: .5
+}
+
+.c-info .pqz {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #4cfdff;
+    z-index: 2
+}
+
+.c-info .pqz span {
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    background-color: red;
+    animation: mymove 2s infinite;
+    -webkit-animation: mymove 2s infinite
+}
+
+keyframes mymove
+
+0
+%
+,
+keyframes mymove
+
+100
+%
+{
+    opacity: 1
+}
+keyframes mymove
+
+50
+%
+{
+    opacity: .5
+}
+@-webkit-keyframes mymove {
+    0%, 100% {
+        opacity: 1
+    }
+    50% {
+        opacity: .5
+    }
+}

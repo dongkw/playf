@@ -1,0 +1,1521 @@
+20170828-09:29:28 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-09:29:28 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-09:29:28 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-09:29:29 main play You're running Play! in DEV mode
+20170828-09:29:29 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-09:29:34 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-09:29:34 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-09:29:40 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-09:41:09 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-09:41:09 play-thread-1 play 
+
+@7566oc7lm
+Internal Server Error (500) for request GET /getData?pageSize=2
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:25)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 651,157 milliseconds ago.  The last packet sent successfully to the server was 21,522 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-09:51:38 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-09:51:38 play-thread-1 play 
+
+@7566oc7ln
+Internal Server Error (500) for request GET /getData?pageSize=50
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:25)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 627,562 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-10:02:00 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-10:02:00 play-thread-1 play 
+
+@7566oc7lo
+Internal Server Error (500) for request GET /getData?pageSize=20
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:25)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 620,321 milliseconds ago.  The last packet sent successfully to the server was 18,901 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-10:12:44 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-10:12:44 play-thread-1 play 
+
+@7566oc7lp
+Internal Server Error (500) for request GET /getData?pageSize=28
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(now(), '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:25)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 632,988 milliseconds ago.  The last packet sent successfully to the server was 18,904 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-10:29:17 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:29:29 play-thread-1 play 
+
+@7566oc7m0
+Internal Server Error (500) for request GET /getData?pageSize=47
+
+Execution exception (In /app/controllers/sys/SysController.java around line 26)
+NoSuchMethodError occured : models.service.BigdataFromBrighteaseService.getAllData(I)Ljava/util/Map;
+
+play.exceptions.JavaExecutionException: models.service.BigdataFromBrighteaseService.getAllData(I)Ljava/util/Map;
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NoSuchMethodError: models.service.BigdataFromBrighteaseService.getAllData(I)Ljava/util/Map;
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+20170828-10:33:28 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:33:34 play-thread-1 play 
+
+@7566oc7m1
+Internal Server Error (500) for request GET /getData?startTime=34pageSize=15
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause' ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(startTime, '%H:%i:%s')           order by createtime desc                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(startTime, '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<date_format(startTime, '%H:%i:%s')           order by createtime desc                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'startTime' in 'where clause'
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+20170828-10:35:01 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:35:01 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:35:01 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:35:02 main play You're running Play! in DEV mode
+20170828-10:35:02 main play Could not bind on port 8090
+20170828-10:35:07 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:35:07 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:35:07 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:35:08 main play You're running Play! in DEV mode
+20170828-10:35:08 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:35:12 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:35:12 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:35:30 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:41:10 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:41:10 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:41:10 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:41:10 main play You're running Play! in DEV mode
+20170828-10:41:10 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:41:12 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:41:12 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:41:21 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:42:07 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:42:07 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:42:07 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:42:07 main play You're running Play! in DEV mode
+20170828-10:42:07 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:42:10 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:42:10 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:42:24 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:42:24 play-thread-1 play 
+
+@75676da2e
+Internal Server Error (500) for request GET /getData?startTime=10:42:06pageSize=50
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1). ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,? ### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:987)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:982)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927)
+	at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3754)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3738)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3780)
+	at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3724)
+	at com.jolbox.bonecp.PreparedStatementHandle.setInt(PreparedStatementHandle.java:844)
+	at org.apache.ibatis.type.IntegerTypeHandler.setNonNullParameter(IntegerTypeHandler.java:28)
+	at org.apache.ibatis.type.IntegerTypeHandler.setNonNullParameter(IntegerTypeHandler.java:23)
+	at org.apache.ibatis.type.BaseTypeHandler.setParameter(BaseTypeHandler.java:46)
+	at org.apache.ibatis.type.UnknownTypeHandler.setNonNullParameter(UnknownTypeHandler.java:37)
+	at org.apache.ibatis.type.BaseTypeHandler.setParameter(BaseTypeHandler.java:46)
+	at org.apache.ibatis.executor.parameter.DefaultParameterHandler.setParameters(DefaultParameterHandler.java:91)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.parameterize(PreparedStatementHandler.java:77)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.parameterize(RoutingStatementHandler.java:58)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:71)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:56)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+20170828-10:42:25 play-thread-1 play 
+
+@75676da2f
+Internal Server Error (500) for request GET /getData?startTime=10:42:25pageSize=40
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1). ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,? ### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<'?'           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: java.sql.SQLException: Parameter index out of range (2 > number of parameters, which is 1).
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:987)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:982)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:927)
+	at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3754)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3738)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3780)
+	at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3724)
+	at com.jolbox.bonecp.PreparedStatementHandle.setInt(PreparedStatementHandle.java:844)
+	at org.apache.ibatis.type.IntegerTypeHandler.setNonNullParameter(IntegerTypeHandler.java:28)
+	at org.apache.ibatis.type.IntegerTypeHandler.setNonNullParameter(IntegerTypeHandler.java:23)
+	at org.apache.ibatis.type.BaseTypeHandler.setParameter(BaseTypeHandler.java:46)
+	at org.apache.ibatis.type.UnknownTypeHandler.setNonNullParameter(UnknownTypeHandler.java:37)
+	at org.apache.ibatis.type.BaseTypeHandler.setParameter(BaseTypeHandler.java:46)
+	at org.apache.ibatis.executor.parameter.DefaultParameterHandler.setParameters(DefaultParameterHandler.java:91)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.parameterize(PreparedStatementHandler.java:77)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.parameterize(RoutingStatementHandler.java:58)
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:71)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:56)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+20170828-10:44:13 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:48:26 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:48:26 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:48:26 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:48:26 main play You're running Play! in DEV mode
+20170828-10:48:26 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:48:29 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:48:29 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:48:36 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:48:51 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:48:51 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:48:51 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:48:52 main play You're running Play! in DEV mode
+20170828-10:48:52 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:49:04 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:49:04 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:49:09 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:49:52 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-10:49:53 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-10:49:53 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-10:49:53 main play You're running Play! in DEV mode
+20170828-10:49:53 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-10:50:00 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-10:50:00 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-10:50:19 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-10:56:01 play-thread-1 play 
+
+@756787mpo
+Internal Server Error (500) for request GET /getData?startTime=%E9%A2%84%E7%BA%A6%E4%BA%86%E5%85%B3%E4%BA%8E%E6%81%90%E6%83%A7%E7%9A%84%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E6%9C%8D%E5%8A%A1&pageSize=19
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<' ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,? ### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+20170828-10:56:57 play-thread-1 play 
+
+@756787mpp
+Internal Server Error (500) for request GET /getData?startTime=%E5%81%9A%E4%BA%86DISC%E4%B8%AA%E6%80%A7%E6%B5%8B%E9%AA%8C%E9%87%8F%E8%A1%A8&pageSize=40
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<' ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,? ### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime<?           order by createtime desc                                      limit 0,?
+### Cause: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:26)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: java.sql.SQLException: Illegal mix of collations for operation '<'
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1073)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+20170828-11:00:07 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-11:00:07 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-11:00:07 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-11:00:07 main play You're running Play! in DEV mode
+20170828-11:00:07 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-11:00:10 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-11:00:10 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-11:00:17 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-11:23:53 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-11:24:05 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-11:25:27 play-thread-1 play 
+
+@7567c48l9
+Internal Server Error (500) for request GET /getData?startTime=11:53:24&pageSize=17
+
+Compilation error (In /app/controllers/sys/SysController.java around line 22)
+The file /app/controllers/sys/SysController.java could not be compiled. Error raised is : The method getAllData(String, int) in the type BigdataFromBrighteaseService is not applicable for the arguments ()
+
+play.exceptions.CompilationException: The method getAllData(String, int) in the type BigdataFromBrighteaseService is not applicable for the arguments ()
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:676)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:520)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:282)
+	at play.classloading.ApplicationClasses$ApplicationClass.compile(ApplicationClasses.java:281)
+	at play.classloading.ApplicationClassloader.detectChanges(ApplicationClassloader.java:324)
+	at play.Play.detectChanges(Play.java:625)
+	at play.Invoker$Invocation.init(Invoker.java:198)
+	at Invocation.HTTP Request(Play!)
+20170828-11:29:08 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-11:29:13 play-thread-1 play 
+
+@7567c48la
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 209)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6 ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:59)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$1.doInSession(BaseIbatis3Dao.java:209)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectOne(BaseIbatis3Dao.java:207)
+	at models.dao.BigdataFromBrighteaseDao.findCount(BigdataFromBrighteaseDao.java:38)
+	at models.service.BigdataFromBrighteaseService.getCount(BigdataFromBrighteaseService.java:32)
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 14 more
+20170828-11:30:12 play-thread-1 play 
+
+@7567c48lb
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 209)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6 ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:59)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$1.doInSession(BaseIbatis3Dao.java:209)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectOne(BaseIbatis3Dao.java:207)
+	at models.dao.BigdataFromBrighteaseDao.findCount(BigdataFromBrighteaseDao.java:38)
+	at models.service.BigdataFromBrighteaseService.getCount(BigdataFromBrighteaseService.java:32)
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 14 more
+20170828-11:30:15 play-thread-1 play 
+
+@7567c48lc
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 209)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6 ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime ### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')           order by createtime' at line 6
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT        count(id) as num         FROM t_bigdata_from_brightease b                     and  createtime<date_format(now(), '%H:%i:%s')           order by createtime
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:59)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$1.doInSession(BaseIbatis3Dao.java:209)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectOne(BaseIbatis3Dao.java:207)
+	at models.dao.BigdataFromBrighteaseDao.findCount(BigdataFromBrighteaseDao.java:38)
+	at models.service.BigdataFromBrighteaseService.getCount(BigdataFromBrighteaseService.java:32)
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and  createtime<date_format(now(), '%H:%i:%s')
+          order by createtime' at line 6
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4096)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4028)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 14 more
+20170828-11:30:20 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-11:30:20 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-11:30:20 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-11:30:20 main play You're running Play! in DEV mode
+20170828-11:30:20 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-11:30:21 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-11:30:22 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-11:30:31 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-13:47:47 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-13:47:47 play-thread-1 play 
+
+@75684m5pc
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT                    id,type,name                    FROM t_bigdata_source ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT                    id,type,name                    FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT                    id,type,name                    FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataSourceDao.findList(BigdataSourceDao.java:32)
+	at models.service.BigdataSourceService.getAllData(BigdataSourceService.java:34)
+	at controllers.sys.SysController.dataCollection(SysController.java:21)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 1,821,776 milliseconds ago.  The last packet sent successfully to the server was 18,915 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-13:48:06 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-13:48:06 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-13:48:06 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-13:48:06 main play You're running Play! in DEV mode
+20170828-13:48:06 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-13:48:13 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-13:48:13 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-13:48:26 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-13:52:41 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-13:52:41 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-13:52:41 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-13:52:41 main play You're running Play! in DEV mode
+20170828-13:52:41 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-13:52:43 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-13:52:43 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-13:52:50 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-15:55:10 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-15:55:10 play-thread-1 play 
+
+@7568lf21l
+Internal Server Error (500) for request GET /getData?startTime=00:27:02&pageSize=6
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:28)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 619,945 milliseconds ago.  The last packet sent successfully to the server was 19,163 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-16:30:21 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-16:30:21 play-thread-1 play 
+
+@7568lf21m
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT                    id,type,name                    FROM t_bigdata_source ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT                    id,type,name                    FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT                    id,type,name                    FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataSourceDao.findList(BigdataSourceDao.java:32)
+	at models.service.BigdataSourceService.getAllData(BigdataSourceService.java:34)
+	at controllers.sys.SysController.dataCollection(SysController.java:21)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 2,110,962 milliseconds ago.  The last packet sent successfully to the server was 18,902 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-16:30:37 main play Starting D:\IdeaWork\big_data_display_system\.
+20170828-16:30:37 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170828-16:30:37 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170828-16:30:37 main play You're running Play! in DEV mode
+20170828-16:30:38 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170828-16:32:30 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170828-16:32:30 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-16:32:35 play-thread-1 play Application 'big_data_display_system' is now started !
+20170828-16:44:57 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-16:44:57 play-thread-1 play 
+
+@7569231od
+Internal Server Error (500) for request GET /getData?startTime=16:44:36&pageSize=1
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:28)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 745,345 milliseconds ago.  The last packet sent successfully to the server was 18,938 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-17:08:26 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-17:09:11 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-17:09:21 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-17:19:36 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170828-17:19:36 play-thread-1 play 
+
+@7569231oe
+Internal Server Error (500) for request GET /getData?startTime=20:00:05&pageSize=10
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:28)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 542,941 milliseconds ago.  The last packet sent successfully to the server was 0 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.io.EOFException: Can not read response from server. Expected to read 4 bytes, read 0 bytes before connection was unexpectedly lost.
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3039)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170828-17:46:57 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-17:47:08 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170828-17:50:07 play-thread-1 play 
+
+@7569231of
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/controllers/sys/SysController.java around line 22)
+NoSuchMethodError occured : models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+
+play.exceptions.JavaExecutionException: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NoSuchMethodError: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+20170828-17:50:08 play-thread-1 play 
+
+@7569231og
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/controllers/sys/SysController.java around line 22)
+NoSuchMethodError occured : models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+
+play.exceptions.JavaExecutionException: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NoSuchMethodError: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+20170828-17:50:09 play-thread-1 play 
+
+@7569231oh
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/controllers/sys/SysController.java around line 22)
+NoSuchMethodError occured : models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+
+play.exceptions.JavaExecutionException: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NoSuchMethodError: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+20170828-17:50:09 play-thread-1 play 
+
+@7569231oi
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/controllers/sys/SysController.java around line 22)
+NoSuchMethodError occured : models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+
+play.exceptions.JavaExecutionException: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NoSuchMethodError: models.service.BigdataFromBrighteaseService.getCount()Ljava/util/Map;
+	at controllers.sys.SysController.dataCollection(SysController.java:22)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+20170828-17:50:24 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning

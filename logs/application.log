@@ -1,0 +1,85 @@
+20170912-10:50:11 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170912-10:50:11 play-thread-1 play 
+
+@75ac9emol
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT         id,type,name,url          FROM t_bigdata_source ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT         id,type,name,url          FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataSourceMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT         id,type,name,url          FROM t_bigdata_source
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataSourceDao.findList(BigdataSourceDao.java:32)
+	at models.service.BigdataSourceService.getAllData(BigdataSourceService.java:34)
+	at controllers.sys.SysController.dataCollection(SysController.java:21)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 3,665,462 milliseconds ago.  The last packet sent successfully to the server was 18,907 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more

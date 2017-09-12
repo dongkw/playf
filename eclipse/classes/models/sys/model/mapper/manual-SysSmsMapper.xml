@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="SysSms">
+   	<select id="SysSms.getSysSmsByMoblie" resultMap="RM_SysSms">
+		   select  * from sys_sms 
+		<where>
+			receiver=#{mobile} and status=1 order by id desc limit 1
+		</where>	
+	</select>
+</mapper>

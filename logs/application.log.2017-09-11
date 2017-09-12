@@ -1,0 +1,8 @@
+20170911-17:30:07 main play Starting D:\IdeaWork\big_data_display_system\.
+20170911-17:30:07 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170911-17:30:07 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170911-17:30:07 main play You're running Play! in DEV mode
+20170911-17:30:07 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170911-17:30:16 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170911-17:30:16 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170911-17:30:29 play-thread-1 play Application 'big_data_display_system' is now started !

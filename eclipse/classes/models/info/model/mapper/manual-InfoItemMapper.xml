@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="InfoItem">
+	
+	<select id="InfoItem.getItemsByMisId" resultMap="RM_InfoItem">
+		SELECT i.* FROM info_item i, info_group_item g, mis_mission m
+		WHERE i.code = g.item_code AND g.group_id = m.group_id AND m.id = #{misId}
+	</select>
+</mapper>

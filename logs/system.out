@@ -1,0 +1,7 @@
+CompilerOracle: exclude jregex/Pretokenizer.next
+Listening for transport dt_socket at address: 8000
+2017-08-29 18:02:10,552 INFO [play] - <Starting D:\IdeaWork\big_data_display_system>
+2017-08-29 18:02:10,576 WARN [play] - <Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)>
+2017-08-29 18:02:10,579 INFO [play] - <Module spring is available (D:\play\modules\spring-1.0.3)>
+2017-08-29 18:02:11,061 WARN [play] - <You're running Play! in DEV mode>
+2017-08-29 18:02:11,111 ERROR [play] - <Could not bind on port 8090>

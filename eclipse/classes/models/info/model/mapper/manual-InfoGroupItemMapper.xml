@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="InfoGroupItem">
+	
+	<select id="InfoGroupItem.getItemsByGroup" resultType="map">
+		SELECT i.id, i.code, i.name FROM info_group_item gi, info_item i
+		WHERE gi.item_code = i.code AND gi.group_id = #{groupId} ORDER BY gi.posit
+	</select>
+</mapper>

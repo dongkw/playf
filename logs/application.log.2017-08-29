@@ -1,0 +1,129 @@
+20170829-00:31:57 play-thread-1 com.jolbox.bonecp.ConnectionHandle Database access problem. Killing off all remaining connections in the connection pool. SQL State = 08S01
+20170829-00:31:57 play-thread-1 play 
+
+@7569231oj
+Internal Server Error (500) for request GET /getData?startTime=03:45:37&pageSize=7
+
+Execution exception (In /app/common/ibatis3/BaseIbatis3Dao.java around line 217)
+PersistenceException occured :  ### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago. ### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml] ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,? ### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure  The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+
+play.exceptions.JavaExecutionException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+### The error may exist in file [D:\IdeaWork\big_data_display_system\.\app\models\model\mapper\manual-BigdataFromBrighteaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT          b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName          FROM t_bigdata_from_brightease b ,t_bigdata_source s         where b.source=s.id                          and  createtime>?           order by createtime                                      limit 0,?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:95)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate$2.doInSession(BaseIbatis3Dao.java:217)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.execute(BaseIbatis3Dao.java:197)
+	at common.ibatis3.BaseIbatis3Dao$SqlSessionTemplate.selectList(BaseIbatis3Dao.java:215)
+	at models.dao.BigdataFromBrighteaseDao.findList(BigdataFromBrighteaseDao.java:34)
+	at models.service.BigdataFromBrighteaseService.getAllData(BigdataFromBrighteaseService.java:26)
+	at controllers.sys.SysController.getData(SysController.java:28)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet successfully received from the server was 650,317 milliseconds ago.  The last packet sent successfully to the server was 18,908 milliseconds ago.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3589)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3478)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4019)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2490)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2651)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2683)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2144)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at com.jolbox.bonecp.PreparedStatementHandle.execute(PreparedStatementHandle.java:138)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:56)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:70)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:57)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:141)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81)
+	at org.apache.ibatis.plugin.Invocation.proceed(Invocation.java:46)
+	at common.ibatis3.plugin.OffsetLimitInterceptor.intercept(OffsetLimitInterceptor.java:56)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:57)
+	at com.sun.proxy.$Proxy13.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:101)
+	... 13 more
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:114)
+	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:161)
+	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:189)
+	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:3036)
+	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3489)
+	... 33 more
+20170829-16:31:51 main play Starting D:\IdeaWork\big_data_display_system\.
+20170829-16:31:51 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170829-16:31:51 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170829-16:31:52 main play You're running Play! in DEV mode
+20170829-16:31:52 main play Could not bind on port 8090
+20170829-16:32:10 main play Starting D:\IdeaWork\big_data_display_system\.
+20170829-16:32:10 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170829-16:32:10 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170829-16:32:11 main play You're running Play! in DEV mode
+20170829-16:32:11 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170829-16:32:15 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170829-16:32:15 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-16:32:20 play-thread-1 play Application 'big_data_display_system' is now started !
+20170829-16:34:25 main play Starting D:\IdeaWork\big_data_display_system\.
+20170829-16:34:25 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170829-16:34:25 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170829-16:34:25 main play You're running Play! in DEV mode
+20170829-16:34:25 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170829-16:34:26 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170829-16:34:26 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-16:34:31 play-thread-1 play Application 'big_data_display_system' is now started !
+20170829-16:58:02 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-16:58:14 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-16:58:43 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:05:09 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:05:33 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:05:50 main play Starting D:\IdeaWork\big_data_display_system\.
+20170829-17:05:50 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170829-17:05:50 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170829-17:05:50 main play You're running Play! in DEV mode
+20170829-17:05:50 main play Listening for HTTP on port 8090 (Waiting a first request to start) ...
+20170829-17:05:56 play-thread-1 play Connected to jdbc:mysql://123.57.47.142:3306/bigdata_analysis?useUnicode=true&autoReconnect=true&rewriteBatchedStatements=TRUE
+20170829-17:05:56 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:06:05 play-thread-1 play Application 'big_data_display_system' is now started !
+20170829-17:07:48 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:07:59 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:14:44 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:37:24 play-thread-1 play.modules.spring.PlayClassPathBeanDefinitionScanner JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+20170829-17:43:54 play-thread-1 play Cannot read application.conf
+20170829-18:00:45 main play Starting D:\IdeaWork\big_data_display_system\.
+20170829-18:00:45 main play Declaring modules in application.conf is deprecated. Use dependencies.yml instead (module.spring)
+20170829-18:00:45 main play Module spring is available (D:\play\modules\spring-1.0.3)
+20170829-18:00:45 main play You're running Play! in DEV mode
+20170829-18:00:45 main play Could not bind on port 8090

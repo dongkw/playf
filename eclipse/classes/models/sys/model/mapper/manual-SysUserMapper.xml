@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="SysUser">
+	
+	<select id="SysUser.getAuthCodeSet" resultType="java.lang.String">
+		SELECT a.code FROM sys_user_role ur
+		LEFT JOIN sys_role_authorization ua on ua.role_id = ur.role_id
+		LEFT JOIN sys_authorization a on a.id = ua.authorization_id
+		WHERE ur.user_id = #{userId}
+	</select>
+</mapper>

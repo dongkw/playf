@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="BigdataFromBrightease">
+
+
+    <select id="BigdataFromBrightease.findAll" resultType="java.util.Map">
+        SELECT
+
+        b.id as id,code,source,data,date_format(createtime, '%H:%i:%s') as createtime,remark,s.name as sourceName
+
+        FROM t_bigdata_from_brightease b ,t_bigdata_source s
+        where b.source=s.id
+
+            <![CDATA[
+          and  createtime>#{startTime}
+          order by createtime
+            ]]>
+
+        <if test="@Ognl@isNotEmpty(pageSize)">
+            limit 0,#{pageSize}
+        </if>
+    </select>
+    <select id="BigdataFromBrightease.findCount" resultType="java.util.Map">
+        SELECT
+
+      count(id) as num
+        FROM t_bigdata_from_brightease b
+        <![CDATA[
+         where createtime<date_format(now(), '%H:%i:%s')
+          order by createtime
+            ]]>
+
+
+    </select>
+</mapper>

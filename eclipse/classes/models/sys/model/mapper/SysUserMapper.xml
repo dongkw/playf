@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="SysUser">
+
+	<resultMap id="RM_SysUser" type="models.sys.model.SysUser">
+        <result property="id" column="id"/>
+        <result property="loginName" column="login_name"/>
+        <result property="email" column="email"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="tel" column="tel"/>
+        <result property="type" column="type"/>
+        <result property="status" column="status"/>
+        <result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="SysUser.columns">
+	    <![CDATA[
+		id,login_name,email,name,password,tel,type,status,create_time
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="SysUser.insert" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO sys_user (
+        	id ,
+        	login_name ,
+        	email ,
+        	name ,
+        	password ,
+        	tel ,
+        	type ,
+        	status ,
+        	create_time 
+        ) VALUES (
+        	#{id} ,
+        	#{loginName} ,
+        	#{email} ,
+        	#{name} ,
+        	#{password} ,
+        	#{tel} ,
+        	#{type} ,
+        	#{status} ,
+        	#{createTime} 
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="SysUser.update" >
+    <![CDATA[
+        UPDATE sys_user SET
+	        login_name = #{loginName} ,
+	        email = #{email} ,
+	        name = #{name} ,
+	        password = #{password} ,
+	        tel = #{tel} ,
+	        type = #{type} ,
+	        status = #{status} ,
+	        create_time = #{createTime} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <delete id="SysUser.delete">
+    <![CDATA[
+        DELETE FROM sys_user WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="SysUser.getById" resultMap="RM_SysUser">
+		SELECT <include refid="SysUser.columns" />
+	    <![CDATA[
+		    FROM sys_user 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="SysUser.findPage.where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+			<if test="@Ognl@isNotEmpty(id)">
+				AND id = #{id}
+			</if>
+			<if test="@Ognl@isNotEmpty(loginName)">
+				AND login_name = #{loginName}
+			</if>
+			<if test="@Ognl@isNotEmpty(email)">
+				AND email = #{email}
+			</if>
+			<if test="@Ognl@isNotEmpty(name)">
+				AND name = #{name}
+			</if>
+			<if test="@Ognl@isNotEmpty(password)">
+				AND password = #{password}
+			</if>
+			<if test="@Ognl@isNotEmpty(tel)">
+				AND tel = #{tel}
+			</if>
+			<if test="@Ognl@isNotEmpty(type)">
+				AND type = #{type}
+			</if>
+			<if test="@Ognl@isNotEmpty(status)">
+				AND status = #{status}
+			</if>
+			<if test="@Ognl@isNotEmpty(createTime)">
+				AND create_time = #{createTime}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="SysUser.findPage.count" resultType="long">
+        SELECT count(*) FROM sys_user 
+		<include refid="SysUser.findPage.where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="SysUser.findPage" resultMap="RM_SysUser">
+    	SELECT <include refid="SysUser.columns" />
+	    FROM sys_user 
+		<include refid="SysUser.findPage.where"/>
+		
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+    <select id="SysUser.getByLoginName" resultMap="RM_SysUser" parameterType="java.lang.String">
+	    SELECT <include refid="SysUser.columns"/>
+	    <![CDATA[
+	        FROM sys_user where login_name = #{loginName}
+	    ]]>
+    </select>
+    
+	
+</mapper>
+

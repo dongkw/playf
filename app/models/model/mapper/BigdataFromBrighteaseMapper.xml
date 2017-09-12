@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="BigdataFromBrightease">
+
+	<resultMap id="RM_BigdataFromBrightease" type="models.model.BigdataFromBrightease">
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="source" column="source"/>
+        <result property="data" column="data"/>
+        <result property="createtime" column="createtime"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="BigdataFromBrightease.columns">
+	    <![CDATA[
+		id,code,source,data,createtime,remark
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="BigdataFromBrightease.insert" useGeneratedKeys="true" keyProperty="id">
+
+    <![CDATA[
+        INSERT INTO t_bigdata_from_brightease (
+
+        	code ,
+        	source ,
+        	data ,
+        	createtime ,
+        	remark 
+        ) VALUES (
+
+        	#{code} ,
+        	#{source} ,
+        	#{data} ,
+        	#{createtime} ,
+        	#{remark} 
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="BigdataFromBrightease.update" >
+    <![CDATA[
+        UPDATE t_bigdata_from_brightease SET
+	        code = #{code} ,
+	        source = #{source} ,
+	        data = #{data} ,
+	        createtime = #{createtime} ,
+	        remark = #{remark} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <delete id="BigdataFromBrightease.delete">
+    <![CDATA[
+        DELETE FROM t_bigdata_from_brightease WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="BigdataFromBrightease.getById" resultMap="RM_BigdataFromBrightease">
+		SELECT <include refid="BigdataFromBrightease.columns" />
+	    <![CDATA[
+		    FROM t_bigdata_from_brightease 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="BigdataFromBrightease.findPage.where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+			<if test="@Ognl@isNotEmpty(id)">
+				AND id = #{id}
+			</if>
+			<if test="@Ognl@isNotEmpty(code)">
+				AND code = #{code}
+			</if>
+			<if test="@Ognl@isNotEmpty(source)">
+				AND source = #{source}
+			</if>
+			<if test="@Ognl@isNotEmpty(data)">
+				AND data = #{data}
+			</if>
+			<if test="@Ognl@isNotEmpty(createtime)">
+				AND createtime = #{createtime}
+			</if>
+			<if test="@Ognl@isNotEmpty(remark)">
+				AND remark = #{remark}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="BigdataFromBrightease.findPage.count" resultType="long">
+        SELECT count(*) FROM t_bigdata_from_brightease 
+		<include refid="BigdataFromBrightease.findPage.where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="BigdataFromBrightease.findPage" resultMap="RM_BigdataFromBrightease">
+    	SELECT <include refid="BigdataFromBrightease.columns" />
+	    FROM t_bigdata_from_brightease 
+		<include refid="BigdataFromBrightease.findPage.where"/>
+		
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+	
+</mapper>
+

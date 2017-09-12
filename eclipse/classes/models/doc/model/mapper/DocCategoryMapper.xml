@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<mapper namespace="DocCategory">
+
+	<resultMap id="RM_DocCategory" type="models.doc.model.DocCategory">
+        <result property="id" column="id"/>
+        <result property="dirName" column="dir_name"/>
+        <result property="dirCode" column="dir_code"/>
+        <result property="createTime" column="create_time"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="DocCategory.columns">
+	    <![CDATA[
+		id,dir_name,dir_code,create_time
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="DocCategory.insert" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO doc_category (
+        	id ,
+        	dir_name ,
+        	dir_code ,
+        	create_time 
+        ) VALUES (
+        	#{id} ,
+        	#{dirName} ,
+        	#{dirCode} ,
+        	#{createTime} 
+        )
+    ]]>
+		<!--	
+			oracle: order="BEFORE" SELECT sequenceName.nextval AS ID FROM DUAL 
+			DB2: order="BEFORE"" values nextval for sequenceName
+		<selectKey resultType="java.lang.Long" order="BEFORE" keyProperty="userId">
+			SELECT sequenceName.nextval AS ID FROM DUAL 
+        </selectKey>
+		-->
+	</insert>
+    
+	<update id="DocCategory.update" >
+    <![CDATA[
+        UPDATE doc_category SET
+	        dir_name = #{dirName} ,
+	        dir_code = #{dirCode} ,
+	        create_time = #{createTime} 
+        WHERE 
+	        id = #{id} 
+    ]]>
+	</update>
+
+    <delete id="DocCategory.delete">
+    <![CDATA[
+        DELETE FROM doc_category WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="DocCategory.getById" resultMap="RM_DocCategory">
+		SELECT <include refid="DocCategory.columns" />
+	    <![CDATA[
+		    FROM doc_category 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="DocCategory.findPage.where">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<where>	      				
+			<if test="@Ognl@isNotEmpty(id)">
+				AND id = #{id}
+			</if>
+			<if test="@Ognl@isNotEmpty(dirName)">
+				AND dir_name = #{dirName}
+			</if>
+			<if test="@Ognl@isNotEmpty(dirCode)">
+				AND dir_code = #{dirCode}
+			</if>
+			<if test="@Ognl@isNotEmpty(createTime)">
+				AND create_time = #{createTime}
+			</if>
+		</where>
+	</sql>
+		
+    <select id="DocCategory.findPage.count" resultType="long">
+        SELECT count(*) FROM doc_category 
+		<include refid="DocCategory.findPage.where"/>    
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="DocCategory.findPage" resultMap="RM_DocCategory">
+    	SELECT <include refid="DocCategory.columns" />
+	    FROM doc_category 
+		<include refid="DocCategory.findPage.where"/>
+		
+		<if test="@Ognl@isNotEmpty(sortColumns)">
+			ORDER BY ${sortColumns}
+		</if>
+    </select>
+
+	
+</mapper>
+

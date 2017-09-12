@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!-- 存放手写的sql -->
+<mapper namespace="DocDocument">
+	
+	<select id="DocDocument.getDocumentList" resultType="map">
+		SELECT d.id, d.name, c.dir_name AS dirName, d.status, DATE_FORMAT(d.create_time,'%Y-%m-%d') AS createTime,
+			CASE d.status WHEN 1 THEN '已生成' WHEN 0 THEN '生成中' ELSE '生成失败' END AS statusName
+		FROM doc_document d
+		LEFT JOIN doc_category c ON c.id = d.dir_id
+		ORDER BY d.id DESC
+		<if test="@Ognl@isNotEmpty(start)">
+			<if test="@Ognl@isNotEmpty(limit)">
+				LIMIT #{start}, #{limit}
+			</if>
+		</if>
+	</select>
+	
+	<select id="DocDocument.getDocumentCount" resultType="int">
+		SELECT COUNT(*) FROM doc_document d
+		LEFT JOIN doc_category c ON c.id = d.dir_id
+	</select>
+</mapper>
